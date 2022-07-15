@@ -14,36 +14,34 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Awesome App"),
-      ),
-      body: Center(
-        child: Container(
-          height: 100,
-          width: 100,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-              color: Colors.red,
-              borderRadius: BorderRadius.circular(10),
-              gradient:
-                  const LinearGradient(colors: [Colors.pink, Colors.yellow]),
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.grey,
-                  blurRadius: 14,
-                )
-              ]),
-          child: const Text(
-            "Hello Flutter",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-              fontSize: 14,
-            ),
-          ),
+        appBar: AppBar(
+          title: const Text("Awesome App"),
         ),
-      ),
-    );
+        body: Container(
+          color: Colors.green[100],
+          width: double.infinity,
+          height: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                width: 100,
+                height: 100,
+                color: Colors.red,
+              ),
+              Container(
+                width: 100,
+                height: 100,
+                color: Colors.yellow,
+              ),
+              Container(
+                width: 100,
+                height: 100,
+                color: Colors.green,
+              ),
+            ],
+          ),
+        ));
   }
 }
