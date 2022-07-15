@@ -8,8 +8,17 @@ void main() {
   ));
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final TextEditingController _inputController = TextEditingController();
+
+  String name = "Change my Name";
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +27,39 @@ class HomePage extends StatelessWidget {
         title: const Text("Awesome App"),
       ),
       body: Center(
-        child: Container(
-          color: Colors.teal,
-          width: 100,
-          height: 100,
+          child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Card(
+              child: Column(
+            children: [
+              Image.asset("/img.jpg", fit: BoxFit.cover),
+              const SizedBox(
+                height: 21,
+              ),
+              Text(
+                name,
+                style:
+                    const TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 21,
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+                child: TextField(
+                  decoration: const InputDecoration(
+                      hintText: "Enter Your Name",
+                      labelText: "Name",
+                      // floatingLabelBehavior: FloatingLabelBehavior.never,
+                      border: OutlineInputBorder()),
+                  controller: _inputController,
+                ),
+              )
+            ],
+          )),
         ),
-      ),
+      )),
       drawer: Drawer(
         child: ListView(children: const [
           UserAccountsDrawerHeader(
@@ -49,7 +85,10 @@ class HomePage extends StatelessWidget {
         ]),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          name = _inputController.text;
+          setState(() {});
+        },
         child: const Icon(
           Icons.edit,
           color: Colors.white,
